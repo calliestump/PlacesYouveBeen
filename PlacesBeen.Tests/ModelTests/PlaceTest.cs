@@ -20,7 +20,7 @@ namespace PlacesBeen.TestTools
       string cityName = "Portland";
       Place newPlace = new Place(cityName);
       string result = newPlace.CityName;
-      Assert.AreEqual("Seattle", result);
+      Assert.AreEqual(cityName, result);
     }
   }
 }
