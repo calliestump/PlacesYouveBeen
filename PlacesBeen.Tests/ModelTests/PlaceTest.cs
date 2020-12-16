@@ -38,5 +38,40 @@ namespace PlacesBeen.TestTools
       // Assert
       CollectionAssert.AreEqual(newPlace, result);
     }
+    [TestMethod]
+    public void GetAll_ReturnPlace_PlaceList()
+    {
+      string place01 = "Portland";
+      string place02 = "Jackson";
+      Place newPlace1 = new Place(place01);
+      Place newPlace2 = new Place(place02);
+      List<Place> newList = new List<Place> { newPlace1, newPlace2 };
+      List<Place> result = Place.GetAll();
+      CollectionAssert.AreEqual(newList, result);
+    }
+
+    [TestMethod]
+    public void GetId_ItemsMadeWithAnIdAndReturned_Int()
+    {
+      string cityName = "Portland";
+      Place newPlace = new Place(cityName);
+      
+      int result = newPlace.Id;
+
+      Assert.AreEqual(1, result);
+    }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectPlace_Place()
+    {
+      string cityName1 = "Portland";
+      string cityName2 = "Jackson";
+      Place newPlace1 = new Place(cityName1);
+      Place newPlace2 = new Place(cityName2);
+
+      Place result = Place.Find(2);
+
+      Assert.AreEqual(newPlace2, result);
+    }
   }
 }
