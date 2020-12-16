@@ -6,8 +6,14 @@ using System;
 namespace PlacesBeen.TestTools
 {
   [TestClass]
-  public class PlaceTest
+  public class PlaceTest :IDisposable
   {
+    public void Dispose()
+    {
+      Place.ClearAll();
+    }
+    
+    
     [TestMethod]
     public void PlaceConstructor_CreatesInstanceOfPlace_Place()
     {
@@ -22,13 +28,15 @@ namespace PlacesBeen.TestTools
       string result = newPlace.CityName;
       Assert.AreEqual(cityName, result);
     }
+
+    [TestMethod]
+    public void GetAll_RetunsEmptyList_PlaceList()
+    {
+      List<Place> newPlace = new List<Place> { };
+      List<Place> result = Place.GetAll();
+
+      // Assert
+      CollectionAssert.AreEqual(newPlace, result);
+    }
   }
 }
-
-// public class PlaceTest : IDisposable
-// {
-//   public void Dispose()
-//   {
-//     Place.ClearAll();
-//   }
-// }
